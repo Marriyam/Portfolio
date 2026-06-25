@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { certifications } from "../data/content";
 
 const images = import.meta.glob("../assets/screenshots/*.{png,jpg,jpeg}", {
@@ -18,6 +18,7 @@ const fanOffsets = [-120, -60, 0, 60, 120];
 
 export default function CertificateFile() {
   const [open, setOpen] = useState(false);
+  const [preview, setPreview] = useState(null);
 
   return (
     <motion.div
@@ -32,7 +33,7 @@ export default function CertificateFile() {
         Certifications &amp; Recognition
       </h3>
       <p className="text-slate-500 text-xs font-mono mb-10">
-        {open ? "tap a certificate to view" : "opening the file..."}
+        {open ? "click a certificate to view" : "opening the file..."}
       </p>
 
       <div className="relative w-full max-w-3xl h-[280px] md:h-[340px] flex items-center justify-center">
@@ -62,11 +63,10 @@ export default function CertificateFile() {
           const offset = fanOffsets[i % fanOffsets.length];
 
           return (
-            <motion.a
+            <motion.button
               key={cert.title}
-              href={src}
-              target="_blank"
-              rel="noreferrer"
+              type="button"
+              onClick={() => src && setPreview(cert)}
               initial={{ y: 20, opacity: 0, rotate: 0, x: 0 }}
               animate={
                 open
@@ -75,7 +75,7 @@ export default function CertificateFile() {
               }
               transition={{ duration: 0.7, delay: 0.3 + i * 0.1, ease: "easeOut" }}
               whileHover={{ y: -70, scale: 1.08, zIndex: 20, transition: { duration: 0.25 } }}
-              className="absolute w-32 md:w-40 cursor-pointer"
+              className="absolute w-32 md:w-40 cursor-pointer text-left"
               style={{ zIndex: i }}
             >
               <div
@@ -93,10 +93,49 @@ export default function CertificateFile() {
               <p className="text-[10px] text-slate-300 font-mono text-center mt-2 leading-tight">
                 {cert.title}
               </p>
-            </motion.a>
+            </motion.button>
           );
         })}
       </div>
+
+      <AnimatePresence>
+        {preview && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-navy/95 backdrop-blur-sm flex items-center justify-center p-6"
+            onClick={() => setPreview(null)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ duration: 0.3 }}
+              className="relative max-w-2xl w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setPreview(null)}
+                className="absolute -top-10 right-0 text-slate-300 hover:text-white text-2xl"
+              >
+                ✕
+              </button>
+              <div
+                className="rounded-lg overflow-hidden bg-white"
+                style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.6)" }}
+              >
+                <img
+                  src={resolveImage(preview.image)}
+                  alt={preview.title}
+                  className="w-full h-auto block"
+                />
+              </div>
+              <p className="text-center text-slate-300 text-sm font-mono mt-4">{preview.title}</p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }
