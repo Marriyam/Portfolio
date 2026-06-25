@@ -1,20 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import HerbsScene from "./scenes/HerbsScene";
-import AmbulanceScene from "./scenes/AmbulanceScene";
-import StreamScene from "./scenes/StreamScene";
-import TransitScene from "./scenes/TransitScene";
-import NetworkScene from "./scenes/NetworkScene";
-import RadarScene from "./scenes/RadarScene";
-
-const sceneMap = {
-  herbs: HerbsScene,
-  ambulance: AmbulanceScene,
-  stream: StreamScene,
-  transit: TransitScene,
-  network: NetworkScene,
-  radar: RadarScene,
-};
+import { sceneMap } from "./scenes/sceneMap";
 
 export default function IntroScene({ theme, color, title }) {
   const ref = useRef(null);

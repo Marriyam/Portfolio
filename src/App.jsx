@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Story from "./components/Story";
+import WorkIntro from "./components/WorkIntro";
 import CaseStudy from "./components/CaseStudy";
 import OtherProjects from "./components/OtherProjects";
 import Skills from "./components/Skills";
@@ -15,6 +16,7 @@ function App() {
       <Navbar />
       <Hero />
       <Story />
+      <WorkIntro />
       <div id="work">
         {caseStudies.map((study, i) => (
           <CaseStudy key={study.id} study={study} index={i} stacked />

@@ -4,6 +4,7 @@ import BrowserFrame from "./BrowserFrame";
 import CountUpStat from "./CountUpStat";
 import TiltCard from "./TiltCard";
 import IntroScene from "./IntroScene";
+import { sceneMap } from "./scenes/sceneMap";
 
 const cards = [
   { key: "problem", label: "Problem", icon: "❓" },
@@ -18,6 +19,7 @@ export default function CaseStudy({ study, index = 0, stacked = false }) {
   const c = study.color;
   const heroImage = study.images?.find((i) => i.primary) ?? study.images?.[0];
   const extraImages = study.images?.filter((i) => i !== heroImage) ?? [];
+  const BackgroundScene = study.theme ? sceneMap[study.theme] : null;
 
   return (
     <>
@@ -35,6 +37,12 @@ export default function CaseStudy({ study, index = 0, stacked = false }) {
           zIndex: stacked ? index + 1 : "auto",
         }}
       >
+        {BackgroundScene && (
+          <div className="absolute inset-0 opacity-[0.15] pointer-events-none">
+            <BackgroundScene color={c} />
+          </div>
+        )}
+
         <div
           className="absolute top-0 left-0 w-full h-1"
           style={{ background: `linear-gradient(90deg, transparent, ${c}, transparent)` }}
