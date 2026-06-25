@@ -12,7 +12,7 @@ const cards = [
   { key: "outcome", label: "Outcome", icon: "🏆" },
 ];
 
-export default function CaseStudy({ study }) {
+export default function CaseStudy({ study, index = 0, stacked = false }) {
   const [expanded, setExpanded] = useState(false);
   const isFeatured = study.tag.toLowerCase().includes("featured");
   const c = study.color;
@@ -25,8 +25,15 @@ export default function CaseStudy({ study }) {
 
       <section
         id={study.id}
-        className="snap-start min-h-screen flex flex-col justify-center relative border-t border-cyan/10 py-10 px-6 overflow-hidden"
-        style={{ background: `linear-gradient(135deg, ${c}1a, transparent 60%)` }}
+        className={`${
+          stacked ? "sticky top-0" : "snap-start"
+        } min-h-screen flex flex-col justify-center relative border-t border-cyan/10 py-10 px-6 overflow-hidden`}
+        style={{
+          background: stacked
+            ? `linear-gradient(135deg, ${c}1a, transparent 60%), #0a0e1a`
+            : `linear-gradient(135deg, ${c}1a, transparent 60%)`,
+          zIndex: stacked ? index + 1 : "auto",
+        }}
       >
         <div
           className="absolute top-0 left-0 w-full h-1"

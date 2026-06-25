@@ -15,9 +15,9 @@ function App() {
       <Navbar />
       <Hero />
       <Story />
-      <div id="work" style={{ scrollSnapType: "y proximity" }}>
+      <div id="work">
         {caseStudies.map((study, i) => (
-          <CaseStudy key={study.id} study={study} index={i} />
+          <CaseStudy key={study.id} study={study} index={i} stacked />
         ))}
       </div>
       <OtherProjects />
