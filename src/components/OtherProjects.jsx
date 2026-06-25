@@ -31,7 +31,7 @@ export default function OtherProjects() {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
           transition={{ staggerChildren: 0.15 }}
-          className="grid md:grid-cols-3 gap-5"
+          className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto"
         >
           {otherProjects.map((p) => (
             <motion.div
