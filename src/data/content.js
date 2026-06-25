@@ -116,24 +116,24 @@ export const caseStudies = [
     id: "skyporter",
     theme: "transit",
     tag: "Case Study",
-    metaTags: ["Production Ownership", "Payments", "Full-stack"],
+    metaTags: ["Architecture", "Payments", "Full-stack"],
     title: "Skyporter Luggage Sharing",
-    headline: "Owned a live product end-to-end, from architecture to payouts",
+    headline: "Architected and built the web app, then rebuilt the public site",
     oneLiner:
-      "Owned the production frontend end-to-end: live site, payments, and admin tooling.",
+      "Travelers have unused luggage space. People shipping items pay high traditional carrier costs. Skyporter matches the two so senders pay less and travelers earn money along a route they're already taking.",
     color: "#ec4899",
     colorSoft: "rgba(236, 72, 153, 0.12)",
     problem:
-      "Skyporter needed a working consumer product with real payment flows and internal tooling for the team to operate it, built and shipped to production.",
+      "Shipping items the traditional way is expensive, and people traveling on the same route already have luggage space going unused. Skyporter needed a platform connecting the two sides: a consumer web app for senders and travelers, an admin panel for the team to operate it, and a public-facing site to bring users in.",
     approach:
-      "Owned the live production site end-to-end (skyporter.us): deployment, real users, real bugs in production. Set up the architecture and base structure for the internal admin panel, which a teammate then built features on top of. Implemented Stripe and Payoneer for checkout and payouts.",
+      "Designed the architecture for both the web app and the admin panel, then built the web app solo and co-built the admin panel with a teammate working from that architecture. Separately, took the existing Skyporter marketing site and substantially redeveloped it.",
     decision:
-      "Prioritized getting a working payment infrastructure and admin tooling into production over perfecting it first, enabling the team to iterate on real user feedback.",
+      "Designed the admin panel's architecture to be extendable from the start, since a teammate would be building features on top of it after the initial structure was in place. The web app's architecture was built solo end-to-end, with payment flows (Stripe, Payoneer) integrated directly into it.",
     outcome:
-      "Live production app at skyporter.us, with working payment infrastructure and admin tooling actively used by the team.",
+      "Working web app, admin panel, and redeveloped public site, with payment infrastructure integrated and the admin panel actively used by the team to run operations.",
     stack: ["React", "TypeScript", "Stripe", "Payoneer", "Auth0"],
-    metrics: [{ end: 2, suffix: "", label: "Payment systems integrated" }],
-    images: [{ file: "skyporter-home.jpeg", caption: "Skyporter homepage", primary: true }],
+    metrics: [{ end: 3, suffix: "", label: "Surfaces built: app, admin, site" }],
+    images: [{ file: "skyporter-home.jpeg", caption: "Skyporter marketing site", primary: true }],
     link: "https://skyporter.us",
   },
   {
