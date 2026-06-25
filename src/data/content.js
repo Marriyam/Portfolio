@@ -9,13 +9,29 @@ export const profile = {
   location: "Bahawalpur, Pakistan",
 };
 
+export const story = {
+  photo: null,
+  paragraphs: [
+    "I grew up in Bahawalpur, Pakistan, where the career paths that got drawn for you were medicine or engineering. I picked computer science because of something simpler: time disappeared when I was at a keyboard.",
+    "It took a process of elimination to find AI. App development cost me sleep and didn't hold my interest. Cybersecurity didn't stick. Web development came too easily to feel like a real fight. AI was the one thing I'd sit with for two, three days straight and still want to keep going — not because I had to, but because I couldn't put it down.",
+    "Web development became the job that paid the bills. AI became the thing I built toward in parallel — through projects, a published paper, and self-study, while working full-time.",
+    "The throughline became clear with one project: a clinical decision support system for Unani medicine practitioners, in communities where a missed diagnosis carries a real human cost. That's when 'reliable AI' stopped being an abstract phrase. It became the actual question I wanted to spend a career answering — not how to make a model accurate on a benchmark, but how to make it trustworthy enough to lean on when it actually matters.",
+    "That's what I'm chasing now: an MSc in AI, research in reliable medical AI, and work that doesn't fail the people who have no backup plan.",
+  ],
+};
+
 export const caseStudies = [
   {
     id: "cdss",
+    theme: "herbs",
     tag: "Featured Case Study",
+    metaTags: ["Healthcare AI", "NLP", "Research", "Published"],
     title: "CDSS for Unani Medicine",
+    headline: "Built a diagnostic AI that earned physician trust and got published",
     oneLiner:
       "A published research system that encodes how human experts actually diagnose — not just what they diagnose.",
+    color: "#f97316",
+    colorSoft: "rgba(249, 115, 22, 0.12)",
     problem:
       "Unani medicine practitioners in underserved parts of Pakistan and India had no digital diagnostic tools. Expert diagnostic reasoning didn't exist as labeled data — it lived only in practitioners' heads, built from years of pattern recognition.",
     approach:
@@ -25,19 +41,25 @@ export const caseStudies = [
     outcome:
       "Physician-validated diagnostic accuracy. Published research: arXiv:2310.18361.",
     stack: ["Python", "TensorFlow", "BioBERT", "NLP", "Decision Trees", "React", "FastAPI", "MySQL"],
+    metrics: [{ end: 1, suffix: "", label: "Published Paper" }],
     images: [
-      { file: "cdss-classification.png", caption: "Symptom input → ranked diagnosis output", primary: true },
-      { file: "cdss-dashboard.png", caption: "UNANIX clinician dashboard" },
-      { file: "cdss-treatments.png", caption: "Treatments reference page" },
+      { file: "cdss-classification.jpeg", caption: "Symptom input → ranked diagnosis output", primary: true },
+      { file: "cdss-dashboard.jpeg", caption: "UNANIX clinician dashboard" },
+      { file: "cdss-treatments.jpeg", caption: "Treatments reference page" },
     ],
     link: "https://arxiv.org/abs/2310.18361",
   },
   {
     id: "lumsx",
+    theme: "network",
     tag: "Case Study",
+    metaTags: ["Data Portal", "SQL Optimization", "EdTech"],
     title: "LUMSx Data Portal",
+    headline: "Took data retrieval from days to seconds with one optimization pass",
     oneLiner:
       "Solved a distributed-information problem, then optimized the result from days to seconds.",
+    color: "#22d3ee",
+    colorSoft: "rgba(34, 211, 238, 0.12)",
     problem:
       "LUMSx's operational data — payments, certificates, course stats — was scattered across disconnected sources with no central access point.",
     approach:
@@ -48,14 +70,26 @@ export const caseStudies = [
       "Data retrieval time cut from days to seconds — a 95% improvement in system responsiveness. Supported two cohorts of 70+ learners.",
     stack: ["React.js", "PHP", "Laravel", "PostgreSQL", "SQL Optimization"],
     stat: { before: "Days", after: "Seconds", label: "Data retrieval time" },
-    images: [],
+    metrics: [
+      { end: 95, suffix: "%", label: "Responsiveness gain" },
+      { end: 70, suffix: "+", label: "Learners per cohort" },
+    ],
+    images: [
+      { file: "lumsx-analytics-overview.jpeg", caption: "Learners analytics — fiscal year overview", primary: true },
+      { file: "lumsx-revenue-trend.jpeg", caption: "Revenue & learners trend by quarter" },
+    ],
   },
   {
     id: "aimp",
+    theme: "radar",
     tag: "Case Study",
+    metaTags: ["Fraud Detection", "Feature Engineering", "FinTech"],
     title: "OPEN AIMP Fraud Detection",
+    headline: "Cut noisy features in half and improved fraud accuracy by 15%",
     oneLiner:
       "Cut a 25+ variable feature set down to 15 by separating real predictive signal from noise.",
+    color: "#a855f7",
+    colorSoft: "rgba(168, 85, 247, 0.12)",
     problem:
       "Fraud detection pipeline for 1.5M loan records started with 25+ candidate variables. Many added noise rather than predictive value, diluting signal in the model.",
     approach:
@@ -66,14 +100,28 @@ export const caseStudies = [
       "40% efficiency gain in the pipeline; 15% improvement in fraud detection accuracy. Named Intern of the Month, July 2022.",
     stack: ["Python", "Pandas", "Scikit-learn", "Feature Engineering"],
     stat: { before: "25+", after: "15", label: "Variables, by predictive signal" },
-    images: [],
+    metrics: [
+      { end: 1.5, decimals: 1, suffix: "M", label: "Records processed" },
+      { end: 40, suffix: "%", label: "Efficiency gain" },
+      { end: 15, suffix: "%", label: "Accuracy improvement" },
+    ],
+    images: [
+      { file: "aimp-risk-score.png", caption: "Risk score vs. amount requested", primary: true },
+      { file: "aimp-fico-high.png", caption: "FICO range (high) distribution" },
+      { file: "aimp-fico-low.png", caption: "FICO range (low) distribution" },
+    ],
   },
   {
     id: "skyporter",
+    theme: "transit",
     tag: "Case Study",
+    metaTags: ["Production Ownership", "Payments", "Full-stack"],
     title: "Skyporter Luggage Sharing",
+    headline: "Owned a live product end-to-end, from architecture to payouts",
     oneLiner:
       "Owned the production frontend end-to-end — live site, payments, and admin tooling.",
+    color: "#ec4899",
+    colorSoft: "rgba(236, 72, 153, 0.12)",
     problem:
       "Skyporter needed a working consumer product with real payment flows and internal tooling for the team to operate it, built and shipped to production.",
     approach:
@@ -83,8 +131,70 @@ export const caseStudies = [
     outcome:
       "Live production app at skyporter.us, with working payment infrastructure and admin tooling actively used by the team.",
     stack: ["React", "TypeScript", "Stripe", "Payoneer", "Auth0"],
-    images: [{ file: "skyporter-home.png", caption: "Skyporter homepage", primary: true }],
+    metrics: [{ end: 2, suffix: "", label: "Payment systems integrated" }],
+    images: [{ file: "skyporter-home.jpeg", caption: "Skyporter homepage", primary: true }],
     link: "https://skyporter.us",
+  },
+  {
+    id: "wetterauer",
+    theme: "ambulance",
+    tag: "Case Study",
+    metaTags: ["Healthcare Logistics", "Fleet Management", "B2B", "Germany"],
+    title: "Wetterauer Fahrdienst Systems",
+    headline: "Built the systems that run a German patient-transport company",
+    oneLiner:
+      "Four systems built over time for one client: ambulance booking, dialysis transport, driver management, and insurance billing.",
+    color: "#10b981",
+    colorSoft: "rgba(16, 185, 129, 0.12)",
+    problem:
+      "Wetterauer Fahrdienst needed to track ambulance bookings for patients and insurance companies, manage a fleet of drivers and their performance, and calculate insurance bills accurately by rate — all without one connected system.",
+    approach:
+      "Built four separate systems over multiple engagements: a booking portal for general ambulance transport, a dedicated portal for dialysis patient transport, a driver management system tracking attendance, leaves, and earnings across the fleet, and a billing calculator that computes insurance charges based on the company's rate card.",
+    decision:
+      "Built each system as its own focused tool rather than one monolithic platform — booking and dialysis transport have different patient flows, and the driver/billing tools serve internal operations, not patients. Keeping them separate matched how the team actually worked.",
+    outcome:
+      "Four systems in active use: ambulance booking, dialysis transport booking, driver management (38 drivers, 3,873+ hours tracked monthly), and an insurance billing calculator.",
+    stack: ["Web App", "Admin Dashboards", "Analytics", "Booking Systems"],
+    metrics: [
+      { end: 38, suffix: "", label: "Drivers managed" },
+      { end: 4, suffix: "", label: "Systems built" },
+    ],
+    images: [
+      { file: "wetterauer-driver-dashboard.jpeg", caption: "Driver Management — fleet dashboard", primary: true },
+      { file: "wetterauer-driver-analytics.jpeg", caption: "Driver analytics & monthly comparisons" },
+      { file: "wetterauer-calculator.jpeg", caption: "Insurance billing price calculator" },
+    ],
+    link: "http://wetterauer-fahrdienst.de/",
+  },
+  {
+    id: "netflix",
+    theme: "stream",
+    tag: "Case Study",
+    metaTags: ["Data Analysis", "Text Mining", "Image Classification"],
+    title: "Netflix Content Analysis",
+    headline: "Mined 8,807 titles to find what actually drives Netflix's catalog",
+    oneLiner:
+      "Text mining and image classification combined to surface real patterns in streaming content, not just summary stats.",
+    color: "#dc2626",
+    colorSoft: "rgba(220, 38, 38, 0.12)",
+    problem:
+      "Netflix's catalog data was just a spreadsheet of titles, genres, and dates — no clear picture of what content patterns actually drove the platform, or how release timing and genre mix played out at scale.",
+    approach:
+      "Ran text mining across 8,807 records to surface dominant themes and genre distribution, then separately built an image classification benchmark comparing grayscale vs. colored input on a neural network, to test how much color information mattered for accuracy.",
+    decision:
+      "Treated the two analyses as genuinely separate questions — content pattern analysis answers 'what is on Netflix,' image classification answers 'how much does visual detail matter to a model.' Kept them as distinct deliverables instead of forcing a single narrative.",
+    outcome:
+      "Identified International Movies, Dramas, and Comedies as the dominant genres by volume. Image classification hit 72% accuracy on grayscale vs. 80% on colored input — an 8-point gap attributable purely to color information.",
+    stack: ["Python", "Pandas", "TensorFlow", "OpenCV", "Text Mining"],
+    metrics: [
+      { end: 8807, suffix: "", label: "Records analyzed" },
+      { end: 80, suffix: "%", label: "Colored image accuracy" },
+      { end: 72, suffix: "%", label: "Grayscale image accuracy" },
+    ],
+    images: [
+      { file: "netflix-top-genres.jpeg", caption: "Top 10 genres by content count", primary: true },
+      { file: "netflix-release-months.jpeg", caption: "Release month distribution" },
+    ],
   },
 ];
 
@@ -93,16 +203,21 @@ export const otherProjects = [
     title: "Vitae — Electronic Health Record System",
     description:
       "30+ Django REST API endpoints for hospital management, with role-based access control and telehealth integration for virtual consultations across a multi-hospital architecture.",
+    color: "#3b82f6",
+    images: [
+      { file: "vitae-hero.jpeg", caption: "Vitae EHR — landing page" },
+      { file: "vitae-cta.jpeg", caption: "Vitae EHR — trial signup" },
+    ],
   },
   {
     title: "Code Clause — Data Science Internship",
     description:
       "Predictive models for stock prediction, wine quality, and personalised medicine recommendations across 10,000+ record datasets, achieving 80%+ accuracy end-to-end.",
-  },
-  {
-    title: "Netflix & Image Processing Analysis",
-    description:
-      "Text mining across 8,807 Netflix records to surface dominant content themes; comparative image classification benchmarking grayscale (72%) vs. colored (80%) accuracy.",
+    color: "#eab308",
+    images: [
+      { file: "codeclause-wordcloud.png", caption: "Symptom frequency word cloud" },
+      { file: "codeclause-medicine-bar.png", caption: "Recommended medicine frequency" },
+    ],
   },
 ];
 
@@ -111,6 +226,52 @@ export const skills = {
   "Languages": ["Python", "JavaScript", "TypeScript", "PHP", "SQL"],
   "Frameworks": ["React.js", "Django", "Laravel", "Node.js", "FastAPI"],
   "Data & Cloud": ["PostgreSQL", "MySQL", "MongoDB", "Microsoft Azure"],
+};
+
+export const skillGraph = {
+  nodes: [
+    { id: "python", label: "Python", group: "ai" },
+    { id: "tensorflow", label: "TensorFlow", group: "ai" },
+    { id: "nlp", label: "NLP", group: "ai" },
+    { id: "deeplearning", label: "Deep Learning", group: "ai" },
+    { id: "biobert", label: "BioBERT", group: "ai" },
+    { id: "decisiontrees", label: "Decision Trees", group: "ai" },
+    { id: "featureeng", label: "Feature Engineering", group: "ai" },
+    { id: "pca", label: "PCA", group: "ai" },
+    { id: "federated", label: "Federated Learning", group: "ai" },
+    { id: "sklearn", label: "Scikit-learn", group: "ai" },
+    { id: "pandas", label: "Pandas", group: "ai" },
+
+    { id: "javascript", label: "JavaScript", group: "web" },
+    { id: "typescript", label: "TypeScript", group: "web" },
+    { id: "react", label: "React.js", group: "web" },
+    { id: "fastapi", label: "FastAPI", group: "web" },
+    { id: "django", label: "Django", group: "web" },
+    { id: "laravel", label: "Laravel", group: "web" },
+    { id: "php", label: "PHP", group: "web" },
+    { id: "nodejs", label: "Node.js", group: "web" },
+    { id: "stripe", label: "Stripe", group: "web" },
+    { id: "auth0", label: "Auth0", group: "web" },
+
+    { id: "sql", label: "SQL", group: "data" },
+    { id: "postgresql", label: "PostgreSQL", group: "data" },
+    { id: "mysql", label: "MySQL", group: "data" },
+    { id: "mongodb", label: "MongoDB", group: "data" },
+    { id: "azure", label: "Microsoft Azure", group: "data" },
+  ],
+  links: [
+    ["python", "tensorflow"], ["python", "nlp"], ["python", "pandas"], ["python", "sklearn"],
+    ["tensorflow", "deeplearning"], ["nlp", "biobert"], ["biobert", "deeplearning"],
+    ["deeplearning", "decisiontrees"], ["decisiontrees", "featureeng"],
+    ["featureeng", "pca"], ["featureeng", "sklearn"], ["sklearn", "federated"],
+    ["pandas", "featureeng"],
+    ["javascript", "typescript"], ["javascript", "react"], ["typescript", "react"],
+    ["react", "stripe"], ["react", "auth0"], ["react", "nodejs"],
+    ["nodejs", "fastapi"], ["php", "laravel"], ["laravel", "mysql"],
+    ["django", "fastapi"], ["django", "python"],
+    ["sql", "postgresql"], ["sql", "mysql"], ["sql", "mongodb"],
+    ["postgresql", "laravel"], ["azure", "tensorflow"], ["mongodb", "nodejs"],
+  ],
 };
 
 export const education = {

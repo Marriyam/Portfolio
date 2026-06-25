@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { skills, education, certifications } from "../data/content";
+import { education, certifications } from "../data/content";
+import ConstellationSkills from "./ConstellationSkills";
 
 export default function Skills() {
   return (
@@ -10,42 +11,28 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-bold text-center text-white mb-12"
+          className="text-3xl md:text-4xl font-bold text-center text-white mb-2"
         >
           Skills & Background
         </motion.h2>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-center text-slate-400 mb-10"
+        >
+          Hover a node to see how it connects.
+        </motion.p>
 
         <motion.div
-          initial="hidden"
-          whileInView="show"
+          initial={{ opacity: 0, scale: 0.97 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ staggerChildren: 0.12 }}
-          className="grid md:grid-cols-2 gap-5 mb-10"
+          transition={{ duration: 0.6 }}
+          className="mb-10"
         >
-          {Object.entries(skills).map(([category, items]) => (
-            <motion.div
-              key={category}
-              variants={{
-                hidden: { opacity: 0, x: -20 },
-                show: { opacity: 1, x: 0, transition: { duration: 0.5 } },
-              }}
-              className="glow-border rounded-xl bg-navy-light/60 p-6"
-            >
-              <h3 className="font-mono text-cyan text-sm uppercase tracking-widest mb-3">
-                {category}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {items.map((item) => (
-                  <span
-                    key={item}
-                    className="px-3 py-1 text-sm rounded-md bg-indigo/30 text-slate-200 border border-indigo/40"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+          <ConstellationSkills />
         </motion.div>
 
         <motion.div

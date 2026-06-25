@@ -12,7 +12,7 @@ function resolveImage(filename) {
   return match ? match[1] : null;
 }
 
-export default function CaseStudyImage({ file, caption, primary }) {
+export default function CaseStudyImage({ file, caption, primary, accent = "#22d3ee" }) {
   const [loaded, setLoaded] = useState(false);
   const src = resolveImage(file);
 
@@ -22,7 +22,9 @@ export default function CaseStudyImage({ file, caption, primary }) {
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`rounded-xl overflow-hidden border border-cyan/15 bg-navy-light shadow-lg shadow-black/30 ${
+      whileHover={{ y: -4 }}
+      style={{ boxShadow: `0 0 0 1px ${accent}30`, background: "#111827" }}
+      className={`rounded-xl overflow-hidden shadow-lg shadow-black/30 transition-shadow ${
         primary ? "md:col-span-2" : ""
       }`}
     >

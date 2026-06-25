@@ -1,10 +1,9 @@
-import { motion } from "framer-motion";
-import CaseStudyImage from "./CaseStudyImage";
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-};
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import BrowserFrame from "./BrowserFrame";
+import CountUpStat from "./CountUpStat";
+import TiltCard from "./TiltCard";
+import IntroScene from "./IntroScene";
 
 const cards = [
   { key: "problem", label: "Problem", icon: "❓" },
@@ -13,143 +12,244 @@ const cards = [
   { key: "outcome", label: "Outcome", icon: "🏆" },
 ];
 
-function StatBadge({ stat }) {
-  if (!stat) return null;
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.2 }}
-      className="flex items-center justify-center gap-6 mb-10 font-mono"
-    >
-      <span className="text-2xl md:text-4xl text-slate-500 line-through">{stat.before}</span>
-      <motion.span
-        animate={{ x: [0, 6, 0] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
-        className="text-cyan text-2xl"
-      >
-        →
-      </motion.span>
-      <span className="text-2xl md:text-4xl text-cyan font-bold">{stat.after}</span>
-      <span className="text-slate-400 text-sm ml-2 hidden md:inline">{stat.label}</span>
-    </motion.div>
-  );
-}
-
-export default function CaseStudy({ study, index }) {
+export default function CaseStudy({ study }) {
+  const [expanded, setExpanded] = useState(false);
   const isFeatured = study.tag.toLowerCase().includes("featured");
+  const c = study.color;
+  const heroImage = study.images?.find((i) => i.primary) ?? study.images?.[0];
+  const extraImages = study.images?.filter((i) => i !== heroImage) ?? [];
 
   return (
-    <motion.section
-      id={study.id}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.6 }}
-      className="relative py-24 px-6 border-t border-cyan/10"
-    >
-      <div className="max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-          className="flex justify-center mb-4"
-        >
-          <span
-            className={`px-4 py-1 rounded-full text-xs font-mono tracking-widest uppercase ${
-              isFeatured
-                ? "bg-cyan text-navy font-bold"
-                : "bg-cyan/10 text-cyan border border-cyan/30"
-            }`}
-          >
-            {study.tag}
-          </span>
-        </motion.div>
+    <>
+      {study.theme && <IntroScene theme={study.theme} color={c} title={study.title} />}
 
-        <motion.h2
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-3xl md:text-5xl font-bold text-center text-white mb-4"
-        >
-          {study.title}
-        </motion.h2>
+      <section
+        id={study.id}
+        className="snap-start min-h-screen flex flex-col justify-center relative border-t border-cyan/10 py-10 px-6 overflow-hidden"
+        style={{ background: `linear-gradient(135deg, ${c}1a, transparent 60%)` }}
+      >
+        <div
+          className="absolute top-0 left-0 w-full h-1"
+          style={{ background: `linear-gradient(90deg, transparent, ${c}, transparent)` }}
+        />
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-center text-slate-400 max-w-2xl mx-auto mb-12"
-        >
-          {study.oneLiner}
-        </motion.p>
-
-        <StatBadge stat={study.stat} />
-
-        {study.images?.length > 0 && (
-          <div className="grid md:grid-cols-2 gap-4 mb-12">
-            {study.images.map((img) => (
-              <CaseStudyImage key={img.file} {...img} />
-            ))}
-          </div>
-        )}
-
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ staggerChildren: 0.15 }}
-          className="grid md:grid-cols-2 gap-5"
-        >
-          {cards.map((c) => (
+        <div className="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-8 items-center">
+          <div>
             <motion.div
-              key={c.key}
-              variants={cardVariants}
-              className="glow-border rounded-xl bg-navy-light/60 backdrop-blur-sm p-6"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+              className="mb-4"
             >
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-xl">{c.icon}</span>
-                <h3 className="font-semibold text-cyan-bright">{c.label}</h3>
-              </div>
-              <p className="text-slate-300 leading-relaxed">{study[c.key]}</p>
+              <span
+                className="px-4 py-1 rounded-full text-xs font-mono tracking-widest uppercase font-bold"
+                style={{
+                  background: isFeatured ? c : `${c}20`,
+                  color: isFeatured ? "#0a0e1a" : c,
+                  border: isFeatured ? "none" : `1px solid ${c}50`,
+                }}
+              >
+                {study.tag}
+              </span>
             </motion.div>
-          ))}
-        </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-wrap justify-center gap-2 mt-8"
-        >
-          {study.stack.map((tech) => (
-            <span
-              key={tech}
-              className="px-3 py-1 text-xs font-mono rounded-md bg-indigo/30 text-slate-300 border border-indigo/40"
+            <motion.h2
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-3xl md:text-4xl font-bold text-white mb-2"
             >
-              {tech}
-            </span>
-          ))}
-        </motion.div>
+              {study.title}
+            </motion.h2>
 
-        {study.link && (
-          <div className="flex justify-center mt-6">
-            <a
-              href={study.link}
-              target="_blank"
-              rel="noreferrer"
-              className="text-cyan text-sm font-mono underline-offset-4 hover:underline"
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              className="text-base md:text-lg font-semibold mb-3"
+              style={{ color: c }}
             >
-              View live →
-            </a>
+              {study.headline}
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex flex-wrap gap-2 mb-3"
+            >
+              {study.metaTags?.slice(0, 3).map((t) => (
+                <span
+                  key={t}
+                  className="text-xs font-mono px-2 py-0.5 rounded-md text-slate-300"
+                  style={{ background: "rgba(255,255,255,0.05)" }}
+                >
+                  {t}
+                </span>
+              ))}
+            </motion.div>
+
+            {study.metrics?.length > 0 && (
+              <motion.div
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ staggerChildren: 0.12 }}
+                className="flex flex-wrap gap-6 mb-4"
+              >
+                {study.metrics.slice(0, 3).map((m, i) => (
+                  <motion.div
+                    key={i}
+                    variants={{
+                      hidden: { opacity: 0, y: 20 },
+                      show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+                    }}
+                  >
+                    <CountUpStat {...m} color={c} />
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
+
+            <motion.div
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ staggerChildren: 0.1 }}
+              className="grid grid-cols-2 gap-3"
+            >
+              {cards.map((card) => (
+                <motion.div
+                  key={card.key}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+                  }}
+                >
+                  <TiltCard
+                    className="rounded-lg backdrop-blur-sm p-3 h-full"
+                    style={{ background: "rgba(17, 24, 39, 0.6)", boxShadow: `0 0 0 1px ${c}26` }}
+                  >
+                    <div className="flex items-center gap-1.5 mb-1">
+                      <span className="text-sm">{card.icon}</span>
+                      <h3 className="text-xs font-semibold" style={{ color: c }}>
+                        {card.label}
+                      </h3>
+                    </div>
+                    <p className="text-slate-300 text-xs leading-snug line-clamp-4">
+                      {study[card.key]}
+                    </p>
+                  </TiltCard>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            <div className="flex items-center gap-4 mt-4">
+              <button
+                onClick={() => setExpanded(true)}
+                className="text-xs font-mono underline-offset-4 hover:underline"
+                style={{ color: c }}
+              >
+                View full details →
+              </button>
+              {study.link && (
+                <a
+                  href={study.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-xs font-mono text-slate-400 hover:text-slate-200"
+                >
+                  Live link ↗
+                </a>
+              )}
+            </div>
           </div>
+
+          {heroImage && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6 }}
+            >
+              <BrowserFrame {...heroImage} accent={c} url={study.link} parallax={false} />
+            </motion.div>
+          )}
+        </div>
+      </section>
+
+      <AnimatePresence>
+        {expanded && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-navy/95 backdrop-blur-sm overflow-y-auto p-6"
+            onClick={() => setExpanded(false)}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 40 }}
+              transition={{ duration: 0.3 }}
+              className="max-w-4xl mx-auto bg-navy-light/90 rounded-2xl p-8 my-10"
+              style={{ boxShadow: `0 0 0 1px ${c}40` }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex justify-between items-start mb-6">
+                <h2 className="text-2xl font-bold text-white">{study.title}</h2>
+                <button
+                  onClick={() => setExpanded(false)}
+                  className="text-slate-400 hover:text-white text-xl"
+                >
+                  ✕
+                </button>
+              </div>
+
+              <p className="text-slate-300 mb-6">{study.oneLiner}</p>
+
+              <div className="grid md:grid-cols-2 gap-4 mb-6">
+                {cards.map((card) => (
+                  <div
+                    key={card.key}
+                    className="rounded-lg p-4"
+                    style={{ background: "rgba(255,255,255,0.03)", boxShadow: `0 0 0 1px ${c}26` }}
+                  >
+                    <h3 className="text-sm font-semibold mb-1" style={{ color: c }}>
+                      {card.icon} {card.label}
+                    </h3>
+                    <p className="text-slate-300 text-sm leading-relaxed">{study[card.key]}</p>
+                  </div>
+                ))}
+              </div>
+
+              {extraImages.length > 0 && (
+                <div className="grid md:grid-cols-2 gap-4 mb-6">
+                  {extraImages.map((img) => (
+                    <BrowserFrame key={img.file} {...img} accent={c} url={study.link} parallax={false} />
+                  ))}
+                </div>
+              )}
+
+              <div className="flex flex-wrap gap-2">
+                {study.stack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1 text-xs font-mono rounded-md text-slate-300"
+                    style={{ background: `${c}1a`, border: `1px solid ${c}33` }}
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
         )}
-      </div>
-    </motion.section>
+      </AnimatePresence>
+    </>
   );
 }

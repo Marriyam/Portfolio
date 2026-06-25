@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { profile } from "../data/content";
+import MagneticButton from "./MagneticButton";
+import ParticleField from "./ParticleField";
 
 export default function Contact() {
   return (
@@ -7,6 +9,7 @@ export default function Contact() {
       id="contact"
       className="relative py-32 px-6 border-t border-cyan/10 grid-bg overflow-hidden"
     >
+      <ParticleField density={40} />
       <motion.div
         animate={{ opacity: [0.1, 0.3, 0.1], scale: [1, 1.1, 1] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
@@ -28,24 +31,20 @@ export default function Contact() {
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
-          <motion.a
+          <MagneticButton
             href={`mailto:${profile.email}`}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            className="px-6 py-3 rounded-lg bg-cyan text-navy font-semibold shadow-lg shadow-cyan/20"
+            className="px-6 py-3 rounded-lg bg-cyan text-navy font-semibold shadow-lg shadow-cyan/20 inline-block"
           >
             {profile.email}
-          </motion.a>
-          <motion.a
+          </MagneticButton>
+          <MagneticButton
             href={profile.linkedin}
             target="_blank"
             rel="noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            className="px-6 py-3 rounded-lg border border-cyan/40 text-cyan font-semibold"
+            className="px-6 py-3 rounded-lg border border-cyan/40 text-cyan font-semibold inline-block"
           >
             LinkedIn
-          </motion.a>
+          </MagneticButton>
         </div>
 
         <p className="font-mono text-xs text-slate-500">

@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { otherProjects } from "../data/content";
+import CaseStudyImage from "./CaseStudyImage";
+import TiltCard from "./TiltCard";
 
 export default function OtherProjects() {
   return (
@@ -38,10 +40,23 @@ export default function OtherProjects() {
                 hidden: { opacity: 0, y: 30 },
                 show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
               }}
-              className="glow-border rounded-xl bg-navy-light/60 p-6"
             >
-              <h3 className="font-semibold text-cyan-bright mb-3">{p.title}</h3>
-              <p className="text-sm text-slate-300 leading-relaxed">{p.description}</p>
+              <TiltCard
+                className="rounded-xl p-6 h-full"
+                style={{ background: "rgba(17, 24, 39, 0.6)", boxShadow: `0 0 0 1px ${p.color}30` }}
+              >
+                <h3 className="font-semibold mb-3" style={{ color: p.color }}>
+                  {p.title}
+                </h3>
+                <p className="text-sm text-slate-300 leading-relaxed mb-4">{p.description}</p>
+                {p.images?.length > 0 && (
+                  <div className="grid grid-cols-2 gap-2">
+                    {p.images.map((img) => (
+                      <CaseStudyImage key={img.file} {...img} accent={p.color} />
+                    ))}
+                  </div>
+                )}
+              </TiltCard>
             </motion.div>
           ))}
         </motion.div>
