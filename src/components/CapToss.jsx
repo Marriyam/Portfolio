@@ -15,7 +15,8 @@ export default function CapToss({ onSettled }) {
     <motion.div
       initial={{ opacity: 1 }}
       onViewportEnter={() => setThrown(true)}
-      viewport={{ once: true, amount: 0.5 }}
+      onViewportLeave={() => setThrown(false)}
+      viewport={{ once: false, amount: 0.5 }}
       className="relative h-28 flex items-center justify-center"
     >
       <motion.div
@@ -27,9 +28,9 @@ export default function CapToss({ onSettled }) {
                 rotate: [0, 200, 360],
                 scale: [1, 1.15, 1],
               }
-            : {}
+            : { y: 0, rotate: 0, scale: 1 }
         }
-        transition={{ duration: 1.1, times: [0, 0.55, 1], ease: "easeOut" }}
+        transition={{ duration: 1.1, times: thrown ? [0, 0.55, 1] : undefined, ease: "easeOut" }}
         onAnimationComplete={() => onSettled?.()}
         className="relative z-10"
       >
