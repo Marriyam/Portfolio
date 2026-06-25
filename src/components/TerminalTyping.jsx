@@ -33,7 +33,7 @@ export default function TerminalTyping({ lines, className = "" }) {
         <span className="w-3 h-3 rounded-full bg-red-400/70" />
         <span className="w-3 h-3 rounded-full bg-yellow-400/70" />
         <span className="w-3 h-3 rounded-full bg-green-400/70" />
-        <span className="ml-2 text-xs text-slate-500">marriyam.dev — zsh</span>
+        <span className="ml-2 text-xs text-slate-500">marriyam.dev : zsh</span>
       </div>
       {lines.slice(0, lineIndex).map((l, i) => (
         <div key={i} className="text-sm text-slate-300 mb-1">

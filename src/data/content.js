@@ -2,7 +2,7 @@ export const profile = {
   name: "Marriyam Nadeem",
   tagline: "I build AI and software systems for situations where failure has a real cost.",
   subtitle:
-    "Associate Software Engineer & AI/Data Science practitioner — clinical AI, fraud detection, full-stack product engineering.",
+    "Associate Software Engineer & AI/Data Science practitioner, working across clinical AI, fraud detection, and full-stack product engineering.",
   email: "marriyamnadeem759@gmail.com",
   phone: "+92 307 0885939",
   linkedin: "https://linkedin.com/in/marriyam-nadeem/",
@@ -13,10 +13,10 @@ export const story = {
   photo: null,
   paragraphs: [
     "I grew up in Bahawalpur, Pakistan, where the career paths that got drawn for you were medicine or engineering. I picked computer science because of something simpler: time disappeared when I was at a keyboard.",
-    "It took a process of elimination to find AI. App development cost me sleep and didn't hold my interest. Cybersecurity didn't stick. Web development came too easily to feel like a real fight. AI was the one thing I'd sit with for two, three days straight and still want to keep going — not because I had to, but because I couldn't put it down.",
-    "Web development became the job that paid the bills. AI became the thing I built toward in parallel — through projects, a published paper, and self-study, while working full-time.",
-    "The throughline became clear with one project: a clinical decision support system for Unani medicine practitioners, in communities where a missed diagnosis carries a real human cost. That's when 'reliable AI' stopped being an abstract phrase. It became the actual question I wanted to spend a career answering — not how to make a model accurate on a benchmark, but how to make it trustworthy enough to lean on when it actually matters.",
-    "That's what I'm chasing now: an MSc in AI, research in reliable medical AI, and work that doesn't fail the people who have no backup plan.",
+    "It took a process of elimination to find AI. App development cost me sleep and didn't hold my interest. Cybersecurity didn't stick. Web development, the field I now work in professionally, gave me a real, satisfying craft to build with. AI was the one thing I'd sit with for two, three days straight and still want to keep going, not because I had to, but because I couldn't put it down.",
+    "Web development is the work I do well and take seriously every day. AI became the thing I built toward in parallel, through projects, a published paper, and self-study, alongside that full-time work.",
+    "The throughline became clear with one project: a clinical decision support system for Unani medicine practitioners, in communities where a missed diagnosis carries a real human cost. That's when 'reliable AI' stopped being an abstract phrase. It became the actual question I wanted to spend a career answering, not how to make a model accurate on a benchmark, but how to make it trustworthy enough to lean on when it actually matters.",
+    "That's what I'm chasing now, to put my effort into bringing reliability to AI, and work that doesn't fail the people who have no backup plan.",
   ],
 };
 
@@ -30,15 +30,15 @@ export const caseStudies = [
     title: "CDSS for Unani Medicine",
     headline: "Built a diagnostic AI that earned physician trust and got published",
     oneLiner:
-      "A published research system that encodes how human experts actually diagnose — not just what they diagnose.",
+      "A published research system that encodes how human experts actually diagnose, not just what they diagnose.",
     color: "#f97316",
     colorSoft: "rgba(249, 115, 22, 0.12)",
     problem:
-      "Unani medicine practitioners in underserved parts of Pakistan and India had no digital diagnostic tools. Expert diagnostic reasoning didn't exist as labeled data — it lived only in practitioners' heads, built from years of pattern recognition.",
+      "Unani medicine practitioners in underserved parts of Pakistan and India had no digital diagnostic tools. Expert diagnostic reasoning didn't exist as labeled data, it lived only in practitioners' heads, built from years of pattern recognition.",
     approach:
       "Built a knowledge base translating expert reasoning into structured logic, combined with a fine-tuned BioBERT model for clinical text and decision trees that mirrored practitioners' actual reasoning steps.",
     decision:
-      "Chose traceable decision trees over a black-box deep learning pipeline so practitioners could see why the system reached a conclusion — there was no specialist fallback to double-check it.",
+      "Chose traceable decision trees over a black-box deep learning pipeline so practitioners could see why the system reached a conclusion, since there was no specialist fallback to double-check it.",
     outcome:
       "Physician-validated diagnostic accuracy. Published research: arXiv:2310.18361.",
     stack: ["Python", "TensorFlow", "BioBERT", "NLP", "Decision Trees", "React", "FastAPI", "MySQL"],
@@ -62,13 +62,13 @@ export const caseStudies = [
     color: "#22d3ee",
     colorSoft: "rgba(34, 211, 238, 0.12)",
     problem:
-      "LUMSx's operational data — payments, certificates, course stats — was scattered across disconnected sources with no central access point.",
+      "LUMSx's operational data, payments, certificates, course stats, was scattered across disconnected sources with no central access point.",
     approach:
       "Built and contributed to a centralized data portal consolidating that scattered data into one place, making it readily accessible to the team for the first time.",
     decision:
-      "After centralizing, rewrote and optimized the underlying SQL queries specifically for retrieval speed, not just correctness — a portal that exists isn't the same as one that's usable in real time.",
+      "After centralizing, rewrote and optimized the underlying SQL queries specifically for retrieval speed, not just correctness, since a portal that exists isn't the same as one that's usable in real time.",
     outcome:
-      "Data retrieval time cut from days to seconds — a 95% improvement in system responsiveness. Supported two cohorts of 70+ learners.",
+      "Data retrieval time cut from days to seconds, a 95% improvement in system responsiveness. Supported two cohorts of 70+ learners.",
     stack: ["React.js", "PHP", "Laravel", "PostgreSQL", "SQL Optimization"],
     stat: { before: "Days", after: "Seconds", label: "Data retrieval time" },
     metrics: [
@@ -76,7 +76,7 @@ export const caseStudies = [
       { end: 70, suffix: "+", label: "Learners per cohort" },
     ],
     images: [
-      { file: "lumsx-analytics-overview.jpeg", caption: "Learners analytics — fiscal year overview", primary: true },
+      { file: "lumsx-analytics-overview.jpeg", caption: "Learners analytics, fiscal year overview", primary: true },
       { file: "lumsx-revenue-trend.jpeg", caption: "Revenue & learners trend by quarter" },
     ],
   },
@@ -96,7 +96,7 @@ export const caseStudies = [
     approach:
       "Used feature importance analysis and statistical testing to isolate which variables actually carried predictive weight for fraud versus which were just along for the ride.",
     decision:
-      "Deliberately cut variables that seemed intuitively relevant but tested as noise — prioritized model clarity and signal quality over having more data feeding the pipeline.",
+      "Deliberately cut variables that seemed intuitively relevant but tested as noise, prioritizing model clarity and signal quality over having more data feeding the pipeline.",
     outcome:
       "40% efficiency gain in the pipeline; 15% improvement in fraud detection accuracy. Named Intern of the Month, July 2022.",
     stack: ["Python", "Pandas", "Scikit-learn", "Feature Engineering"],
@@ -120,7 +120,7 @@ export const caseStudies = [
     title: "Skyporter Luggage Sharing",
     headline: "Owned a live product end-to-end, from architecture to payouts",
     oneLiner:
-      "Owned the production frontend end-to-end — live site, payments, and admin tooling.",
+      "Owned the production frontend end-to-end: live site, payments, and admin tooling.",
     color: "#ec4899",
     colorSoft: "rgba(236, 72, 153, 0.12)",
     problem:
@@ -128,7 +128,7 @@ export const caseStudies = [
     approach:
       "Owned the live production site end-to-end (skyporter.us): deployment, real users, real bugs in production. Set up the architecture and base structure for the internal admin panel, which a teammate then built features on top of. Implemented Stripe and Payoneer for checkout and payouts.",
     decision:
-      "Prioritized getting a working payment infrastructure and admin tooling into production over perfecting it first — enabling the team to iterate on real user feedback.",
+      "Prioritized getting a working payment infrastructure and admin tooling into production over perfecting it first, enabling the team to iterate on real user feedback.",
     outcome:
       "Live production app at skyporter.us, with working payment infrastructure and admin tooling actively used by the team.",
     stack: ["React", "TypeScript", "Stripe", "Payoneer", "Auth0"],
@@ -148,11 +148,11 @@ export const caseStudies = [
     color: "#10b981",
     colorSoft: "rgba(16, 185, 129, 0.12)",
     problem:
-      "Wetterauer Fahrdienst needed to track ambulance bookings for patients and insurance companies, manage a fleet of drivers and their performance, and calculate insurance bills accurately by rate — all without one connected system.",
+      "Wetterauer Fahrdienst needed to track ambulance bookings for patients and insurance companies, manage a fleet of drivers and their performance, and calculate insurance bills accurately by rate, all without one connected system.",
     approach:
       "Built four separate systems over multiple engagements: a booking portal for general ambulance transport, a dedicated portal for dialysis patient transport, a driver management system tracking attendance, leaves, and earnings across the fleet, and a billing calculator that computes insurance charges based on the company's rate card.",
     decision:
-      "Built each system as its own focused tool rather than one monolithic platform — booking and dialysis transport have different patient flows, and the driver/billing tools serve internal operations, not patients. Keeping them separate matched how the team actually worked.",
+      "Built each system as its own focused tool rather than one monolithic platform, since booking and dialysis transport have different patient flows, and the driver/billing tools serve internal operations, not patients. Keeping them separate matched how the team actually worked.",
     outcome:
       "Four systems in active use: ambulance booking, dialysis transport booking, driver management (38 drivers, 3,873+ hours tracked monthly), and an insurance billing calculator.",
     stack: ["Web App", "Admin Dashboards", "Analytics", "Booking Systems"],
@@ -161,7 +161,7 @@ export const caseStudies = [
       { end: 4, suffix: "", label: "Systems built" },
     ],
     images: [
-      { file: "wetterauer-driver-dashboard.jpeg", caption: "Driver Management — fleet dashboard", primary: true },
+      { file: "wetterauer-driver-dashboard.jpeg", caption: "Driver Management, fleet dashboard", primary: true },
       { file: "wetterauer-driver-analytics.jpeg", caption: "Driver analytics & monthly comparisons" },
       { file: "wetterauer-calculator.jpeg", caption: "Insurance billing price calculator" },
     ],
@@ -179,13 +179,13 @@ export const caseStudies = [
     color: "#dc2626",
     colorSoft: "rgba(220, 38, 38, 0.12)",
     problem:
-      "Netflix's catalog data was just a spreadsheet of titles, genres, and dates — no clear picture of what content patterns actually drove the platform, or how release timing and genre mix played out at scale.",
+      "Netflix's catalog data was just a spreadsheet of titles, genres, and dates, with no clear picture of what content patterns actually drove the platform, or how release timing and genre mix played out at scale.",
     approach:
       "Ran text mining across 8,807 records to surface dominant themes and genre distribution, then separately built an image classification benchmark comparing grayscale vs. colored input on a neural network, to test how much color information mattered for accuracy.",
     decision:
-      "Treated the two analyses as genuinely separate questions — content pattern analysis answers 'what is on Netflix,' image classification answers 'how much does visual detail matter to a model.' Kept them as distinct deliverables instead of forcing a single narrative.",
+      "Treated the two analyses as genuinely separate questions: content pattern analysis answers 'what is on Netflix,' image classification answers 'how much does visual detail matter to a model.' Kept them as distinct deliverables instead of forcing a single narrative.",
     outcome:
-      "Identified International Movies, Dramas, and Comedies as the dominant genres by volume. Image classification hit 72% accuracy on grayscale vs. 80% on colored input — an 8-point gap attributable purely to color information.",
+      "Identified International Movies, Dramas, and Comedies as the dominant genres by volume. Image classification hit 72% accuracy on grayscale vs. 80% on colored input, an 8-point gap attributable purely to color information.",
     stack: ["Python", "Pandas", "TensorFlow", "OpenCV", "Text Mining"],
     metrics: [
       { end: 8807, suffix: "", label: "Records analyzed" },
@@ -201,17 +201,17 @@ export const caseStudies = [
 
 export const otherProjects = [
   {
-    title: "Vitae — Electronic Health Record System",
+    title: "Vitae: Electronic Health Record System",
     description:
       "30+ Django REST API endpoints for hospital management, with role-based access control and telehealth integration for virtual consultations across a multi-hospital architecture.",
     color: "#3b82f6",
     images: [
-      { file: "vitae-hero.jpeg", caption: "Vitae EHR — landing page" },
-      { file: "vitae-cta.jpeg", caption: "Vitae EHR — trial signup" },
+      { file: "vitae-hero.jpeg", caption: "Vitae EHR, landing page" },
+      { file: "vitae-cta.jpeg", caption: "Vitae EHR, trial signup" },
     ],
   },
   {
-    title: "Code Clause — Data Science Internship",
+    title: "Code Clause: Data Science Internship",
     description:
       "Predictive models for stock prediction, wine quality, and personalised medicine recommendations across 10,000+ record datasets, achieving 80%+ accuracy end-to-end.",
     color: "#eab308",
@@ -278,14 +278,14 @@ export const skillGraph = {
 export const education = {
   degree: "Bachelor of Computer Science",
   institution: "University of Engineering and Technology, Lahore",
-  years: "2019 – 2023",
+  years: "2019 to 2023",
   gpa: "CGPA 3.57/4.0",
   notes: "Final year project became a published paper (arXiv:2310.18361). Content Lead, Google Developer Students Club. Director, UET Blood Donor Society.",
 };
 
 export const certifications = [
-  "Microsoft Azure AI Fundamentals (AI-900) — 945/1000",
+  "Microsoft Azure AI Fundamentals (AI-900), 945/1000",
   "Google Data Analytics Professional Certificate",
-  "Machine Learning for All — Coursera",
-  "Intern of the Month — OPEN AIMP, July 2022",
+  "Machine Learning for All, Coursera",
+  "Intern of the Month, OPEN AIMP, July 2022",
 ];

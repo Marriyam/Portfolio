@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { education, certifications } from "../data/content";
 import ConstellationSkills from "./ConstellationSkills";
+import EducationTimeline from "./EducationTimeline";
 
 export default function Skills() {
   return (
@@ -35,40 +35,7 @@ export default function Skills() {
           <ConstellationSkills />
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="glow-border rounded-xl bg-navy-light/60 p-6 mb-6"
-        >
-          <h3 className="font-mono text-cyan text-sm uppercase tracking-widest mb-2">Education</h3>
-          <p className="text-white font-semibold">{education.degree}</p>
-          <p className="text-slate-400 text-sm mb-2">
-            {education.institution} · {education.years} · {education.gpa}
-          </p>
-          <p className="text-slate-300 text-sm leading-relaxed">{education.notes}</p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="glow-border rounded-xl bg-navy-light/60 p-6"
-        >
-          <h3 className="font-mono text-cyan text-sm uppercase tracking-widest mb-3">
-            Certifications & Recognition
-          </h3>
-          <ul className="space-y-2">
-            {certifications.map((c) => (
-              <li key={c} className="text-slate-300 text-sm flex items-start gap-2">
-                <span className="text-cyan mt-0.5">▸</span>
-                {c}
-              </li>
-            ))}
-          </ul>
-        </motion.div>
+        <EducationTimeline />
       </div>
     </section>
   );
