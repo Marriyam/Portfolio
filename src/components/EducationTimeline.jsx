@@ -15,7 +15,7 @@ function resolveImage(filename) {
   return match ? match[1] : null;
 }
 
-const logoSrc = resolveImage("uet-logo.jpg");
+const logoSrc = resolveImage("uet-logo-white.png");
 
 export default function EducationTimeline() {
   return (
@@ -96,19 +96,17 @@ export default function EducationTimeline() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="relative w-28 md:w-40 shrink-0 overflow-hidden"
+              className="relative w-28 md:w-40 shrink-0 flex items-center justify-center p-6"
+              style={{
+                background:
+                  "linear-gradient(135deg, rgba(34,211,238,0.1), rgba(34,211,238,0.02))",
+                borderLeft: "1px solid rgba(34,211,238,0.15)",
+              }}
             >
               <img
                 src={logoSrc}
                 alt="UET Lahore logo"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(90deg, rgba(17,24,39,0.95), rgba(17,24,39,0.1))",
-                }}
+                className="w-full h-auto object-contain opacity-90"
               />
             </motion.div>
           )}
