@@ -284,8 +284,24 @@ export const education = {
 };
 
 export const certifications = [
-  "Microsoft Azure AI Fundamentals (AI-900), 945/1000",
-  "Google Data Analytics Professional Certificate",
-  "Machine Learning for All, Coursera",
-  "Intern of the Month, OPEN AIMP, July 2022",
+  {
+    title: "Microsoft Azure AI Fundamentals (AI-900), 945/1000",
+    image: "cert-azure-ai.png",
+  },
+  {
+    title: "Google Data Analytics Professional Certificate",
+    image: "cert-google-data-analytics.png",
+  },
+  {
+    title: "Machine Learning for All, Coursera",
+    image: "cert-ml-for-all.png",
+  },
+  {
+    title: "TechXplore 23, Ultimate Tech Crew",
+    image: "cert-techxplore23.png",
+  },
+  {
+    title: "Intern of the Month, OPEN AIMP, July 2022",
+    image: "cert-intern-of-month.png",
+  },
 ];

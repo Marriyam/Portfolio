@@ -1,20 +1,20 @@
 import { motion } from "framer-motion";
-import { education, certifications } from "../data/content";
+import { education } from "../data/content";
 import TiltCard from "./TiltCard";
-
-const certIcons = ["☁️", "📊", "🤖", "🏆"];
+import CertificateFile from "./CertificateFile";
 
 export default function EducationTimeline() {
   return (
-    <div className="grid md:grid-cols-2 gap-6">
+    <div>
       <motion.div
-        initial={{ opacity: 0, x: -30 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.6 }}
+        className="max-w-2xl mx-auto mb-6"
       >
         <TiltCard
-          className="rounded-xl p-6 h-full relative overflow-hidden"
+          className="rounded-xl p-6 relative overflow-hidden"
           style={{ background: "rgba(17, 24, 39, 0.6)", boxShadow: "0 0 0 1px #22d3ee30" }}
         >
           <motion.div
@@ -81,51 +81,7 @@ export default function EducationTimeline() {
         </TiltCard>
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, x: 30 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6 }}
-      >
-        <TiltCard
-          className="rounded-xl p-6 h-full relative overflow-hidden"
-          style={{ background: "rgba(17, 24, 39, 0.6)", boxShadow: "0 0 0 1px #818cf830" }}
-        >
-          <motion.div
-            animate={{ opacity: [0.1, 0.25, 0.1] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute inset-0 pointer-events-none"
-            style={{ background: "radial-gradient(circle at 80% 80%, #818cf830, transparent 60%)" }}
-          />
-
-          <h3 className="font-mono text-cyan text-sm uppercase tracking-widest mb-4">
-            Certifications &amp; Recognition
-          </h3>
-
-          <motion.ul
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ staggerChildren: 0.12 }}
-            className="space-y-3"
-          >
-            {certifications.map((c, i) => (
-              <motion.li
-                key={c}
-                variants={{
-                  hidden: { opacity: 0, x: -20 },
-                  show: { opacity: 1, x: 0, transition: { duration: 0.4 } },
-                }}
-                whileHover={{ x: 4 }}
-                className="flex items-start gap-3 text-sm text-slate-300 rounded-lg px-2 py-1.5 transition-colors hover:bg-white/5"
-              >
-                <span className="text-base">{certIcons[i % certIcons.length]}</span>
-                <span>{c}</span>
-              </motion.li>
-            ))}
-          </motion.ul>
-        </TiltCard>
-      </motion.div>
+      <CertificateFile />
     </div>
   );
 }
