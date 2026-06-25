@@ -23,7 +23,9 @@ export default function CaseStudy({ study, index = 0, stacked = false }) {
 
   return (
     <>
-      {study.theme && <IntroScene theme={study.theme} color={c} title={study.title} />}
+      {study.theme && !study.skipIntro && (
+        <IntroScene theme={study.theme} color={c} title={study.title} />
+      )}
 
       <section
         id={study.id}

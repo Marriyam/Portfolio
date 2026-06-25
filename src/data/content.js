@@ -24,6 +24,7 @@ export const caseStudies = [
   {
     id: "cdss",
     theme: "herbs",
+    skipIntro: true,
     tag: "Featured Case Study",
     metaTags: ["Healthcare AI", "NLP", "Research", "Published"],
     title: "CDSS for Unani Medicine",
