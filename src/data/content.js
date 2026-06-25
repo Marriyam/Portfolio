@@ -128,7 +128,7 @@ export const caseStudies = [
     approach:
       "Designed the architecture for both the web app and the admin panel, then built the web app solo and co-built the admin panel with a teammate working from that architecture. Separately, took the existing Skyporter marketing site and substantially redeveloped it.",
     decision:
-      "Designed the admin panel's architecture to be extendable from the start, since a teammate would be building features on top of it after the initial structure was in place. The web app's architecture was built solo end-to-end, with payment flows (Stripe, Payoneer) integrated directly into it.",
+      "Designed the admin panel's architecture to be extendable from the start. The web app's architecture was built solo end-to-end, with payment flows (Stripe, Payoneer) integrated directly into it.",
     outcome:
       "Working web app, admin panel, and redeveloped public site, with payment infrastructure integrated and the admin panel actively used by the team to run operations.",
     stack: ["React", "TypeScript", "Stripe", "Payoneer", "Auth0"],
